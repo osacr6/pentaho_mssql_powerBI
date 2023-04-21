@@ -430,7 +430,7 @@
     <created_date>2023/04/20 02:45:45.170</created_date>
     <modified_user>-</modified_user>
     <modified_date>2023/04/20 02:45:45.170</modified_date>
-    <key_for_session_key/>
+    <key_for_session_key>H4sIAAAAAAAA/wMAAAAAAAAAAAA=</key_for_session_key>
     <is_key_private>N</is_key_private>
   </info>
   <notepads>
@@ -542,6 +542,76 @@
     </hop>
   </order>
   <step>
+    <name>Filter rows</name>
+    <type>FilterRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <send_true_to>Sort rows</send_true_to>
+    <send_false_to/>
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue>register_num</leftvalue>
+        <function>IS NOT NULL</function>
+        <rightvalue>register_num</rightvalue>
+      </condition>
+    </compare>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>352</xloc>
+      <yloc>48</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Filter rows 2</name>
+    <type>FilterRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <send_true_to>Sort rows 2</send_true_to>
+    <send_false_to/>
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue>register_num</leftvalue>
+        <function>IS NOT NULL</function>
+        <rightvalue/>
+      </condition>
+    </compare>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>352</xloc>
+      <yloc>192</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>MasterTable</name>
     <type>ExcelInput</type>
     <description/>
@@ -568,7 +638,7 @@
     <accept_field/>
     <accept_stepname/>
     <file>
-      <name>C:\Users\fidelitas\Desktop\DW\Proyecto\FlooddataMasterListrev.xlsx</name>
+      <name>C:\Users\fidelitas\Desktop\DW\pentaho_mssql_powerBI\FlooddataMasterListrev.xlsx</name>
       <filemask/>
       <exclude_filemask/>
       <file_required>N</file_required>
@@ -822,67 +892,51 @@
     <fields>
       <field>
         <name>register_num</name>
-        <rename/>
       </field>
       <field>
         <name>country</name>
-        <rename/>
       </field>
       <field>
         <name>location_details</name>
-        <rename/>
       </field>
       <field>
         <name>date_began</name>
-        <rename/>
       </field>
       <field>
         <name>date_ended</name>
-        <rename/>
       </field>
       <field>
         <name>duration_days</name>
-        <rename/>
       </field>
       <field>
         <name>deads</name>
-        <rename/>
       </field>
       <field>
         <name>displaced</name>
-        <rename/>
       </field>
       <field>
         <name>damage_usd</name>
-        <rename/>
       </field>
       <field>
         <name>main_cause</name>
-        <rename/>
       </field>
       <field>
         <name>severity</name>
-        <rename/>
       </field>
       <field>
         <name>affected_sq_km</name>
-        <rename/>
       </field>
       <field>
         <name>magnitude</name>
-        <rename/>
       </field>
       <field>
         <name>longitude</name>
-        <rename/>
       </field>
       <field>
         <name>latitude</name>
-        <rename/>
       </field>
       <field>
         <name>notes</name>
-        <rename/>
       </field>
       <select_unspecified>N</select_unspecified>
       <meta>
@@ -1173,204 +1227,6 @@
     </GUI>
   </step>
   <step>
-    <name>Table dbo.floods</name>
-    <type>TableOutput</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <connection>G2_PROYECTO_G4_INUNDACIONES</connection>
-    <schema>dbo</schema>
-    <table>floods</table>
-    <commit>5000</commit>
-    <truncate>N</truncate>
-    <ignore_errors>N</ignore_errors>
-    <use_batch>Y</use_batch>
-    <specify_fields>Y</specify_fields>
-    <partitioning_enabled>N</partitioning_enabled>
-    <partitioning_field/>
-    <partitioning_daily>N</partitioning_daily>
-    <partitioning_monthly>Y</partitioning_monthly>
-    <tablename_in_field>N</tablename_in_field>
-    <tablename_field/>
-    <tablename_in_table>Y</tablename_in_table>
-    <return_keys>N</return_keys>
-    <return_field/>
-    <fields>
-      <field>
-        <column_name>register_num</column_name>
-        <stream_name>register_num</stream_name>
-      </field>
-      <field>
-        <column_name>date_began</column_name>
-        <stream_name>date_began</stream_name>
-      </field>
-      <field>
-        <column_name>date_ended</column_name>
-        <stream_name>date_ended</stream_name>
-      </field>
-      <field>
-        <column_name>duration_days</column_name>
-        <stream_name>duration_days</stream_name>
-      </field>
-      <field>
-        <column_name>deads</column_name>
-        <stream_name>deads</stream_name>
-      </field>
-      <field>
-        <column_name>displaced</column_name>
-        <stream_name>displaced</stream_name>
-      </field>
-      <field>
-        <column_name>damage_usd</column_name>
-        <stream_name>damage_usd</stream_name>
-      </field>
-      <field>
-        <column_name>main_cause</column_name>
-        <stream_name>main_cause</stream_name>
-      </field>
-      <field>
-        <column_name>severity</column_name>
-        <stream_name>severity</stream_name>
-      </field>
-      <field>
-        <column_name>affected_sq_km</column_name>
-        <stream_name>affected_sq_km</stream_name>
-      </field>
-      <field>
-        <column_name>magnitude</column_name>
-        <stream_name>magnitude</stream_name>
-      </field>
-      <field>
-        <column_name>notes</column_name>
-        <stream_name>notes</stream_name>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>704</xloc>
-      <yloc>48</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Sort rows</name>
-    <type>SortRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <directory>%%java.io.tmpdir%%</directory>
-    <prefix>out</prefix>
-    <sort_size>1000000</sort_size>
-    <free_memory/>
-    <compress>N</compress>
-    <compress_variable/>
-    <unique_rows>N</unique_rows>
-    <fields>
-      <field>
-        <name>register_num</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <collator_enabled>N</collator_enabled>
-        <collator_strength>0</collator_strength>
-        <presorted>N</presorted>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>528</xloc>
-      <yloc>48</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Table dbo.location</name>
-    <type>TableOutput</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <connection>G2_PROYECTO_G4_INUNDACIONES</connection>
-    <schema>dbo</schema>
-    <table>location</table>
-    <commit>5000</commit>
-    <truncate>N</truncate>
-    <ignore_errors>N</ignore_errors>
-    <use_batch>Y</use_batch>
-    <specify_fields>Y</specify_fields>
-    <partitioning_enabled>N</partitioning_enabled>
-    <partitioning_field/>
-    <partitioning_daily>N</partitioning_daily>
-    <partitioning_monthly>Y</partitioning_monthly>
-    <tablename_in_field>N</tablename_in_field>
-    <tablename_field/>
-    <tablename_in_table>Y</tablename_in_table>
-    <return_keys>N</return_keys>
-    <return_field/>
-    <fields>
-      <field>
-        <column_name>register_num</column_name>
-        <stream_name>register_num</stream_name>
-      </field>
-      <field>
-        <column_name>country</column_name>
-        <stream_name>country</stream_name>
-      </field>
-      <field>
-        <column_name>location_details</column_name>
-        <stream_name>location_details</stream_name>
-      </field>
-      <field>
-        <column_name>longitude</column_name>
-        <stream_name>longitude</stream_name>
-      </field>
-      <field>
-        <column_name>latitude</column_name>
-        <stream_name>latitude</stream_name>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>720</xloc>
-      <yloc>192</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
     <name>Select location</name>
     <type>SelectValues</type>
     <description/>
@@ -1384,23 +1240,18 @@
     <fields>
       <field>
         <name>register_num</name>
-        <rename/>
       </field>
       <field>
         <name>country</name>
-        <rename/>
       </field>
       <field>
         <name>location_details</name>
-        <rename/>
       </field>
       <field>
         <name>longitude</name>
-        <rename/>
       </field>
       <field>
         <name>latitude</name>
-        <rename/>
       </field>
       <select_unspecified>N</select_unspecified>
       <meta>
@@ -1504,6 +1355,48 @@
     </GUI>
   </step>
   <step>
+    <name>Sort rows</name>
+    <type>SortRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>out</prefix>
+    <sort_size>1000000</sort_size>
+    <free_memory/>
+    <compress>N</compress>
+    <compress_variable/>
+    <unique_rows>N</unique_rows>
+    <fields>
+      <field>
+        <name>register_num</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>528</xloc>
+      <yloc>48</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>Sort rows 2</name>
     <type>SortRows</type>
     <description/>
@@ -1541,76 +1434,6 @@
     </remotesteps>
     <GUI>
       <xloc>496</xloc>
-      <yloc>192</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Filter rows</name>
-    <type>FilterRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <send_true_to>Sort rows</send_true_to>
-    <send_false_to/>
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <leftvalue>register_num</leftvalue>
-        <function>IS NOT NULL</function>
-        <rightvalue>register_num</rightvalue>
-      </condition>
-    </compare>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>352</xloc>
-      <yloc>48</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Filter rows 2</name>
-    <type>FilterRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <send_true_to>Sort rows 2</send_true_to>
-    <send_false_to/>
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <leftvalue>register_num</leftvalue>
-        <function>IS NOT NULL</function>
-        <rightvalue/>
-      </condition>
-    </compare>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>352</xloc>
       <yloc>192</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1703,6 +1526,162 @@
     </remotesteps>
     <GUI>
       <xloc>608</xloc>
+      <yloc>192</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Table dbo.floods</name>
+    <type>TableOutput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>G2_PROYECTO_G4_INUNDACIONES</connection>
+    <schema>dbo</schema>
+    <table>floods</table>
+    <commit>5000</commit>
+    <truncate>N</truncate>
+    <ignore_errors>N</ignore_errors>
+    <use_batch>Y</use_batch>
+    <specify_fields>Y</specify_fields>
+    <partitioning_enabled>N</partitioning_enabled>
+    <partitioning_field/>
+    <partitioning_daily>N</partitioning_daily>
+    <partitioning_monthly>Y</partitioning_monthly>
+    <tablename_in_field>N</tablename_in_field>
+    <tablename_field/>
+    <tablename_in_table>Y</tablename_in_table>
+    <return_keys>N</return_keys>
+    <return_field/>
+    <fields>
+      <field>
+        <column_name>register_num</column_name>
+        <stream_name>register_num</stream_name>
+      </field>
+      <field>
+        <column_name>date_began</column_name>
+        <stream_name>date_began</stream_name>
+      </field>
+      <field>
+        <column_name>date_ended</column_name>
+        <stream_name>date_ended</stream_name>
+      </field>
+      <field>
+        <column_name>duration_days</column_name>
+        <stream_name>duration_days</stream_name>
+      </field>
+      <field>
+        <column_name>deads</column_name>
+        <stream_name>deads</stream_name>
+      </field>
+      <field>
+        <column_name>displaced</column_name>
+        <stream_name>displaced</stream_name>
+      </field>
+      <field>
+        <column_name>damage_usd</column_name>
+        <stream_name>damage_usd</stream_name>
+      </field>
+      <field>
+        <column_name>main_cause</column_name>
+        <stream_name>main_cause</stream_name>
+      </field>
+      <field>
+        <column_name>severity</column_name>
+        <stream_name>severity</stream_name>
+      </field>
+      <field>
+        <column_name>affected_sq_km</column_name>
+        <stream_name>affected_sq_km</stream_name>
+      </field>
+      <field>
+        <column_name>magnitude</column_name>
+        <stream_name>magnitude</stream_name>
+      </field>
+      <field>
+        <column_name>notes</column_name>
+        <stream_name>notes</stream_name>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>704</xloc>
+      <yloc>48</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Table dbo.location</name>
+    <type>TableOutput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>G2_PROYECTO_G4_INUNDACIONES</connection>
+    <schema>dbo</schema>
+    <table>location</table>
+    <commit>5000</commit>
+    <truncate>N</truncate>
+    <ignore_errors>N</ignore_errors>
+    <use_batch>Y</use_batch>
+    <specify_fields>Y</specify_fields>
+    <partitioning_enabled>N</partitioning_enabled>
+    <partitioning_field/>
+    <partitioning_daily>N</partitioning_daily>
+    <partitioning_monthly>Y</partitioning_monthly>
+    <tablename_in_field>N</tablename_in_field>
+    <tablename_field/>
+    <tablename_in_table>Y</tablename_in_table>
+    <return_keys>N</return_keys>
+    <return_field/>
+    <fields>
+      <field>
+        <column_name>register_num</column_name>
+        <stream_name>register_num</stream_name>
+      </field>
+      <field>
+        <column_name>country</column_name>
+        <stream_name>country</stream_name>
+      </field>
+      <field>
+        <column_name>location_details</column_name>
+        <stream_name>location_details</stream_name>
+      </field>
+      <field>
+        <column_name>longitude</column_name>
+        <stream_name>longitude</stream_name>
+      </field>
+      <field>
+        <column_name>latitude</column_name>
+        <stream_name>latitude</stream_name>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>720</xloc>
       <yloc>192</yloc>
       <draw>Y</draw>
     </GUI>
