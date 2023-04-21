@@ -496,11 +496,6 @@
   </connection>
   <order>
     <hop>
-      <from>MasterTable</from>
-      <to>Select floods</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Select floods</from>
       <to>Select location</to>
       <enabled>Y</enabled>
@@ -540,6 +535,11 @@
       <to>Table dbo.location</to>
       <enabled>Y</enabled>
     </hop>
+    <hop>
+      <from>MasterTable</from>
+      <to>Select floods</to>
+      <enabled>Y</enabled>
+    </hop>
   </order>
   <step>
     <name>Filter rows</name>
@@ -571,8 +571,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>352</xloc>
-      <yloc>48</yloc>
+      <xloc>464</xloc>
+      <yloc>64</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -606,8 +606,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>352</xloc>
-      <yloc>192</yloc>
+      <xloc>464</xloc>
+      <yloc>208</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -873,8 +873,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>80</xloc>
-      <yloc>48</yloc>
+      <xloc>64</xloc>
+      <yloc>64</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -892,57 +892,73 @@
     <fields>
       <field>
         <name>register_num</name>
+        <rename/>
       </field>
       <field>
         <name>country</name>
+        <rename/>
       </field>
       <field>
         <name>location_details</name>
+        <rename/>
       </field>
       <field>
         <name>date_began</name>
+        <rename/>
       </field>
       <field>
         <name>date_ended</name>
+        <rename/>
       </field>
       <field>
         <name>duration_days</name>
+        <rename/>
       </field>
       <field>
         <name>deads</name>
+        <rename/>
       </field>
       <field>
         <name>displaced</name>
+        <rename/>
       </field>
       <field>
         <name>damage_usd</name>
+        <rename/>
       </field>
       <field>
         <name>main_cause</name>
+        <rename/>
       </field>
       <field>
         <name>severity</name>
+        <rename/>
       </field>
       <field>
         <name>affected_sq_km</name>
+        <rename/>
       </field>
       <field>
         <name>magnitude</name>
+        <rename/>
       </field>
       <field>
         <name>longitude</name>
+        <rename/>
       </field>
       <field>
         <name>latitude</name>
+        <rename/>
       </field>
       <field>
         <name>notes</name>
+        <rename/>
       </field>
       <select_unspecified>N</select_unspecified>
       <meta>
         <name>register_num</name>
         <rename>register_num</rename>
-        <type>None</type>
+        <type>Integer</type>
         <length>-2</length>
         <precision>-2</precision>
         <conversion_mask/>
@@ -1027,7 +1043,7 @@
       <meta>
         <name>duration_days</name>
         <rename>duration_days</rename>
-        <type>None</type>
+        <type>Integer</type>
         <length>-2</length>
         <precision>-2</precision>
         <conversion_mask/>
@@ -1044,7 +1060,7 @@
       <meta>
         <name>deads</name>
         <rename>deads</rename>
-        <type>None</type>
+        <type>Integer</type>
         <length>-2</length>
         <precision>-2</precision>
         <conversion_mask/>
@@ -1061,7 +1077,7 @@
       <meta>
         <name>displaced</name>
         <rename>displaced</rename>
-        <type>None</type>
+        <type>Integer</type>
         <length>-2</length>
         <precision>-2</precision>
         <conversion_mask/>
@@ -1112,7 +1128,7 @@
       <meta>
         <name>severity</name>
         <rename>severity</rename>
-        <type>None</type>
+        <type>Number</type>
         <length>-2</length>
         <precision>-2</precision>
         <conversion_mask/>
@@ -1129,7 +1145,7 @@
       <meta>
         <name>affected_sq_km</name>
         <rename>affected_sq_km</rename>
-        <type>None</type>
+        <type>Number</type>
         <length>-2</length>
         <precision>-2</precision>
         <conversion_mask/>
@@ -1146,7 +1162,7 @@
       <meta>
         <name>magnitude</name>
         <rename>magnitude</rename>
-        <type>None</type>
+        <type>Number</type>
         <length>-2</length>
         <precision>-2</precision>
         <conversion_mask/>
@@ -1221,8 +1237,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>240</xloc>
-      <yloc>48</yloc>
+      <xloc>352</xloc>
+      <yloc>64</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1240,24 +1256,29 @@
     <fields>
       <field>
         <name>register_num</name>
+        <rename/>
       </field>
       <field>
         <name>country</name>
+        <rename/>
       </field>
       <field>
         <name>location_details</name>
+        <rename/>
       </field>
       <field>
         <name>longitude</name>
+        <rename/>
       </field>
       <field>
         <name>latitude</name>
+        <rename/>
       </field>
       <select_unspecified>N</select_unspecified>
       <meta>
         <name>register_num</name>
         <rename>register_num</rename>
-        <type>None</type>
+        <type>Integer</type>
         <length>-2</length>
         <precision>-2</precision>
         <conversion_mask/>
@@ -1349,8 +1370,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>240</xloc>
-      <yloc>192</yloc>
+      <xloc>352</xloc>
+      <yloc>208</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1391,8 +1412,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>528</xloc>
-      <yloc>48</yloc>
+      <xloc>640</xloc>
+      <yloc>64</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1433,8 +1454,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>496</xloc>
-      <yloc>192</yloc>
+      <xloc>608</xloc>
+      <yloc>208</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1525,8 +1546,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>608</xloc>
-      <yloc>192</yloc>
+      <xloc>720</xloc>
+      <yloc>208</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1617,8 +1638,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>704</xloc>
-      <yloc>48</yloc>
+      <xloc>816</xloc>
+      <yloc>64</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1681,8 +1702,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>720</xloc>
-      <yloc>192</yloc>
+      <xloc>832</xloc>
+      <yloc>208</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
