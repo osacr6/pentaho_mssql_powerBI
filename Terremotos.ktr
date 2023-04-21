@@ -430,20 +430,20 @@
     <created_date>2023/04/13 17:35:29.813</created_date>
     <modified_user>-</modified_user>
     <modified_date>2023/04/13 17:35:29.813</modified_date>
-    <key_for_session_key/>
+    <key_for_session_key>H4sIAAAAAAAA/wMAAAAAAAAAAAA=</key_for_session_key>
     <is_key_private>N</is_key_private>
   </info>
   <notepads>
   </notepads>
   <connection>
-    <name>sql1</name>
+    <name>G2_PROYECTO_G4_TERREMOTOS</name>
     <server>localhost</server>
     <type>MSSQL</type>
     <access>Native</access>
     <database>G2_PROYECTO_G4_TERREMOTOS</database>
     <port>1433</port>
-    <username>Pechugadegato</username>
-    <password>Encrypted 2be98afb80fc49a91ac18aa75d993bbd5</password>
+    <username>daniel</username>
+    <password>Encrypted 2be98afc86aa7f2e4cb79ce10bec3fd89</password>
     <servername/>
     <data_tablespace/>
     <index_tablespace/>
@@ -492,18 +492,18 @@
   </connection>
   <order>
     <hop>
-      <from>dim_Location</from>
-      <to>dim_Location1</to>
+      <from>Location</from>
+      <to>Table Location</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>dim_Earthquake</from>
-      <to>dim_Earthquake1</to>
-      <enabled>N</enabled>
+      <from>Earthquake</from>
+      <to>Table Earthquake</to>
+      <enabled>Y</enabled>
     </hop>
   </order>
   <step>
-    <name>dim_Earthquake</name>
+    <name>Earthquake</name>
     <type>ExcelInput</type>
     <description/>
     <distribute>Y</distribute>
@@ -529,7 +529,12 @@
     <accept_field/>
     <accept_stepname/>
     <file>
-      <name>C:\Users\kevin\Downloads\Mag6PlusEarthquakes_1900-2013.xlsx</name>
+      <name/>
+      <filemask/>
+      <exclude_filemask/>
+      <file_required>N</file_required>
+      <include_subfolders>N</include_subfolders>
+      <name>C:\Users\fidelitas\Desktop\DW\pentaho_mssql_powerBI\Mag6PlusEarthquakes_1900-2013.xlsx</name>
       <filemask/>
       <exclude_filemask/>
       <file_required>N</file_required>
@@ -573,7 +578,7 @@
         <group/>
       </field>
       <field>
-        <name>DEPTH</name>
+        <name>MAGNITUDE</name>
         <type>Number</type>
         <length>-1</length>
         <precision>-1</precision>
@@ -585,7 +590,7 @@
         <group/>
       </field>
       <field>
-        <name>MAGNITUDE</name>
+        <name>DEPTH</name>
         <type>Number</type>
         <length>-1</length>
         <precision>-1</precision>
@@ -638,7 +643,71 @@
     </GUI>
   </step>
   <step>
-    <name>dim_Location</name>
+    <name>Table Earthquake</name>
+    <type>TableOutput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>G2_PROYECTO_G4_TERREMOTOS</connection>
+    <schema>dbo</schema>
+    <table>Earthquake</table>
+    <commit>1000</commit>
+    <truncate>N</truncate>
+    <ignore_errors>N</ignore_errors>
+    <use_batch>Y</use_batch>
+    <specify_fields>Y</specify_fields>
+    <partitioning_enabled>N</partitioning_enabled>
+    <partitioning_field/>
+    <partitioning_daily>N</partitioning_daily>
+    <partitioning_monthly>Y</partitioning_monthly>
+    <tablename_in_field>N</tablename_in_field>
+    <tablename_field/>
+    <tablename_in_table>Y</tablename_in_table>
+    <return_keys>N</return_keys>
+    <return_field/>
+    <fields>
+      <field>
+        <column_name>ID</column_name>
+        <stream_name>ID</stream_name>
+      </field>
+      <field>
+        <column_name>DATE</column_name>
+        <stream_name>DATE</stream_name>
+      </field>
+      <field>
+        <column_name>TIME</column_name>
+        <stream_name>TIME</stream_name>
+      </field>
+      <field>
+        <column_name>MAGNITUDE</column_name>
+        <stream_name>MAGNITUDE</stream_name>
+      </field>
+      <field>
+        <column_name>DEPTH</column_name>
+        <stream_name>DEPTH</stream_name>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>336</xloc>
+      <yloc>80</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Location</name>
     <type>ExcelInput</type>
     <description/>
     <distribute>Y</distribute>
@@ -669,7 +738,7 @@
       <exclude_filemask/>
       <file_required>N</file_required>
       <include_subfolders>N</include_subfolders>
-      <name>C:\Users\kevin\Downloads\Mag6PlusEarthquakes_1900-2013.xlsx</name>
+      <name>C:\Users\fidelitas\Desktop\DW\pentaho_mssql_powerBI\Mag6PlusEarthquakes_1900-2013.xlsx</name>
       <filemask/>
       <exclude_filemask/>
       <file_required>N</file_required>
@@ -714,7 +783,7 @@
       </field>
       <field>
         <name>LONGITUDE</name>
-        <type>Number</type>
+        <type>String</type>
         <length>-1</length>
         <precision>-1</precision>
         <trim_type>none</trim_type>
@@ -726,7 +795,7 @@
       </field>
       <field>
         <name>LATITUDE</name>
-        <type>Number</type>
+        <type>String</type>
         <length>-1</length>
         <precision>-1</precision>
         <trim_type>none</trim_type>
@@ -778,7 +847,7 @@
     </GUI>
   </step>
   <step>
-    <name>dim_Earthquake1</name>
+    <name>Table Location</name>
     <type>TableOutput</type>
     <description/>
     <distribute>Y</distribute>
@@ -788,74 +857,10 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <connection>sql1</connection>
+    <connection>G2_PROYECTO_G4_TERREMOTOS</connection>
     <schema>dbo</schema>
-    <table>dim_Earthquake</table>
-    <commit>1000</commit>
-    <truncate>N</truncate>
-    <ignore_errors>N</ignore_errors>
-    <use_batch>Y</use_batch>
-    <specify_fields>Y</specify_fields>
-    <partitioning_enabled>N</partitioning_enabled>
-    <partitioning_field/>
-    <partitioning_daily>N</partitioning_daily>
-    <partitioning_monthly>Y</partitioning_monthly>
-    <tablename_in_field>N</tablename_in_field>
-    <tablename_field/>
-    <tablename_in_table>Y</tablename_in_table>
-    <return_keys>N</return_keys>
-    <return_field/>
-    <fields>
-      <field>
-        <column_name>ID</column_name>
-        <stream_name>ID</stream_name>
-      </field>
-      <field>
-        <column_name>DATE</column_name>
-        <stream_name>DATE</stream_name>
-      </field>
-      <field>
-        <column_name>TIME</column_name>
-        <stream_name>TIME</stream_name>
-      </field>
-      <field>
-        <column_name>DEPTH</column_name>
-        <stream_name>DEPTH</stream_name>
-      </field>
-      <field>
-        <column_name>MAGNITUDE</column_name>
-        <stream_name>MAGNITUDE</stream_name>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>336</xloc>
-      <yloc>80</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>dim_Location1</name>
-    <type>TableOutput</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <connection>sql1</connection>
-    <schema>dbo</schema>
-    <table>dim_Earthquake</table>
-    <commit>1000</commit>
+    <table>Location</table>
+    <commit>10000</commit>
     <truncate>N</truncate>
     <ignore_errors>N</ignore_errors>
     <use_batch>Y</use_batch>
@@ -907,8 +912,8 @@
   </step>
   <step_error_handling>
     <error>
-      <source_step>dim_Location1</source_step>
-      <target_step>dim_Location</target_step>
+      <source_step>Table Location</source_step>
+      <target_step>Location</target_step>
       <is_enabled>N</is_enabled>
       <nr_valuename/>
       <descriptions_valuename/>
