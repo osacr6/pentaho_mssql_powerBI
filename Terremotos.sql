@@ -23,3 +23,6 @@ CREATE TABLE dbo.Location (
     LONGITUDE VARCHAR(255) NOT NULL,
     -- FOREIGN KEY (ID) REFERENCES Earthquake(ID)
 );
+
+SELECT * FROM dbo.Earthquake;
+GO

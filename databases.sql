@@ -1,0 +1,96 @@
+USE G2_PROYECTO_G4_INUNDACIONES;
+GO
+
+--
+DROP TABLE IF EXISTS dbo.location;
+GO
+DROP TABLE IF EXISTS dbo.floods;
+GO
+
+--
+CREATE TABLE dbo.floods (
+    register_num INTEGER PRIMARY KEY,
+    date_began VARCHAR(255),
+    date_ended VARCHAR(255),
+    duration_days INTEGER,
+    deads  INTEGER,
+    displaced INTEGER,
+    damage_usd VARCHAR(255),
+    severity FLOAT,
+    affected_sq_km FLOAT,
+    magnitude FLOAT,
+    main_cause VARCHAR(255),
+    notes TEXT
+);
+
+--
+CREATE TABLE dbo.location (
+    register_num INTEGER PRIMARY KEY,
+    country VARCHAR(255),
+    location_details TEXT,
+    longitude VARCHAR(255),
+    latitude VARCHAR(255)
+    -- FOREIGN KEY (register_num) REFERENCES floods(register_num)
+);
+
+SELECT * FROM floods
+GO
+
+USE G2_PROYECTO_G4_TERREMOTOS
+GO
+
+DROP TABLE IF EXISTS dbo.Location;
+GO
+DROP TABLE IF EXISTS dbo.Earthquake;
+GO 
+
+CREATE TABLE dbo.Earthquake (
+    ID VARCHAR(255) PRIMARY KEY,
+    DATE DATE NOT NULL,
+    TIME TIME NOT NULL,
+    DEPTH FLOAT NOT NULL,
+    MAGNITUDE FLOAT
+);
+
+
+CREATE TABLE dbo.Location (
+    ID VARCHAR(255) PRIMARY KEY,
+    PLACE TEXT,
+    COUNTRY VARCHAR(255),
+    LATITUDE VARCHAR(255) NOT NULL,
+    LONGITUDE VARCHAR(255) NOT NULL,
+    -- FOREIGN KEY (ID) REFERENCES Earthquake(ID)
+);
+
+SELECT * FROM dbo.Earthquake;
+GO
+
+USE G2_PROYECTO_G4_VOLCANES
+GO
+
+DROP TABLE IF EXISTS dbo.Location;
+GO
+DROP TABLE IF EXISTS dbo.Volcano;
+GO 
+
+CREATE TABLE Volcano (
+	ID INTEGER PRIMARY KEY,
+    VOLCANO_NAME VARCHAR(255) NOT NULL,
+    ELEVATION INTEGER NOT NULL,
+    ERUPTION_TYPE VARCHAR(255)NOT NULL,
+    VOLCANO_EXPLOSIVITY INTEGER NOT NULL,
+    DEATHS INTEGER
+);
+
+CREATE TABLE Location (
+	ID INTEGER PRIMARY KEY,
+    VOLCANO_NAME VARCHAR(255) NOT NULL,
+    PLACE TEXT NOT NULL,
+    COUNTRY VARCHAR(255) NOT NULL,
+    LATITUDE VARCHAR(255) NOT NULL,
+    LONGITUDE VARCHAR(255) NOT NULL
+    -- FOREIGN KEY (ID) REFERENCES Volcano(ID)
+);
+
+SELECT * FROM Volcano
+GO

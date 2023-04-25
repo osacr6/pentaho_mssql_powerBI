@@ -492,13 +492,18 @@
   </connection>
   <order>
     <hop>
-      <from>volcanos</from>
-      <to>Table Volcano</to>
+      <from>Location</from>
+      <to>Table output</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Location</from>
-      <to>Table output</to>
+      <from>volcanos</from>
+      <to>If field value is null</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>If field value is null</from>
+      <to>Table Volcano</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -537,43 +542,7 @@
     </file>
     <fields>
       <field>
-        <name>VolcanoName</name>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-      </field>
-      <field>
-        <name>Place</name>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-      </field>
-      <field>
-        <name>Country</name>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-      </field>
-      <field>
-        <name>Latitude</name>
+        <name>ID</name>
         <type>Number</type>
         <length>-1</length>
         <precision>-1</precision>
@@ -585,8 +554,56 @@
         <group/>
       </field>
       <field>
-        <name>Longitude</name>
-        <type>Number</type>
+        <name>VOLCANO_NAME</name>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+      </field>
+      <field>
+        <name>PLACE</name>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+      </field>
+      <field>
+        <name>COUNTRY</name>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+      </field>
+      <field>
+        <name>LATITUDE</name>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+      </field>
+      <field>
+        <name>LONGITUDE</name>
+        <type>String</type>
         <length>-1</length>
         <precision>-1</precision>
         <trim_type>none</trim_type>
@@ -632,8 +649,144 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>176</xloc>
-      <yloc>368</yloc>
+      <xloc>112</xloc>
+      <yloc>320</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Table Volcano</name>
+    <type>TableOutput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>G2_PROYECTO_G4_VOLCANES</connection>
+    <schema>dbo</schema>
+    <table>Volcano</table>
+    <commit>1000</commit>
+    <truncate>N</truncate>
+    <ignore_errors>N</ignore_errors>
+    <use_batch>Y</use_batch>
+    <specify_fields>Y</specify_fields>
+    <partitioning_enabled>N</partitioning_enabled>
+    <partitioning_field/>
+    <partitioning_daily>N</partitioning_daily>
+    <partitioning_monthly>Y</partitioning_monthly>
+    <tablename_in_field>N</tablename_in_field>
+    <tablename_field/>
+    <tablename_in_table>Y</tablename_in_table>
+    <return_keys>N</return_keys>
+    <return_field/>
+    <fields>
+      <field>
+        <column_name>ID</column_name>
+        <stream_name>ID</stream_name>
+      </field>
+      <field>
+        <column_name>VOLCANO_NAME</column_name>
+        <stream_name>VOLCANO_NAME</stream_name>
+      </field>
+      <field>
+        <column_name>ELEVATION</column_name>
+        <stream_name>ELEVATION</stream_name>
+      </field>
+      <field>
+        <column_name>ERUPTION_TYPE</column_name>
+        <stream_name>ERUPTION_TYPE</stream_name>
+      </field>
+      <field>
+        <column_name>VOLCANO_EXPLOSIVITY</column_name>
+        <stream_name>VOLCANO_EXPLOSIVITY</stream_name>
+      </field>
+      <field>
+        <column_name>DEATHS</column_name>
+        <stream_name>DEATHS</stream_name>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>528</xloc>
+      <yloc>112</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Table output</name>
+    <type>TableOutput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <connection>G2_PROYECTO_G4_VOLCANES</connection>
+    <schema>dbo</schema>
+    <table>Location</table>
+    <commit>1000</commit>
+    <truncate>N</truncate>
+    <ignore_errors>N</ignore_errors>
+    <use_batch>Y</use_batch>
+    <specify_fields>Y</specify_fields>
+    <partitioning_enabled>N</partitioning_enabled>
+    <partitioning_field/>
+    <partitioning_daily>N</partitioning_daily>
+    <partitioning_monthly>Y</partitioning_monthly>
+    <tablename_in_field>N</tablename_in_field>
+    <tablename_field/>
+    <tablename_in_table>Y</tablename_in_table>
+    <return_keys>N</return_keys>
+    <return_field/>
+    <fields>
+      <field>
+        <column_name>ID</column_name>
+        <stream_name>ID</stream_name>
+      </field>
+      <field>
+        <column_name>VOLCANO_NAME</column_name>
+        <stream_name>VOLCANO_NAME</stream_name>
+      </field>
+      <field>
+        <column_name>PLACE</column_name>
+        <stream_name>PLACE</stream_name>
+      </field>
+      <field>
+        <column_name>COUNTRY</column_name>
+        <stream_name>COUNTRY</stream_name>
+      </field>
+      <field>
+        <column_name>LATITUDE</column_name>
+        <stream_name>LATITUDE</stream_name>
+      </field>
+      <field>
+        <column_name>LONGITUDE</column_name>
+        <stream_name>LONGITUDE</stream_name>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>288</xloc>
+      <yloc>320</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -672,19 +825,7 @@
     </file>
     <fields>
       <field>
-        <name>VolcanoName</name>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-      </field>
-      <field>
-        <name>Elevation</name>
+        <name>ID</name>
         <type>Number</type>
         <length>-1</length>
         <precision>-1</precision>
@@ -696,7 +837,7 @@
         <group/>
       </field>
       <field>
-        <name>Type</name>
+        <name>VOLCANO_NAME</name>
         <type>String</type>
         <length>-1</length>
         <precision>-1</precision>
@@ -708,7 +849,19 @@
         <group/>
       </field>
       <field>
-        <name>Status</name>
+        <name>ELEVATION</name>
+        <type>Number</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+      </field>
+      <field>
+        <name>ERUPTION_TYPE</name>
         <type>String</type>
         <length>-1</length>
         <precision>-1</precision>
@@ -720,7 +873,7 @@
         <group/>
       </field>
       <field>
-        <name>Volcano Explosivity</name>
+        <name>VOLCANO_EXPLOSIVITY</name>
         <type>Number</type>
         <length>-1</length>
         <precision>-1</precision>
@@ -733,7 +886,7 @@
       </field>
       <field>
         <name>DEATHS</name>
-        <type>String</type>
+        <type>Number</type>
         <length>-1</length>
         <precision>-1</precision>
         <trim_type>none</trim_type>
@@ -779,14 +932,14 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>176</xloc>
-      <yloc>208</yloc>
+      <xloc>112</xloc>
+      <yloc>112</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Table Volcano</name>
-    <type>TableOutput</type>
+    <name>If field value is null</name>
+    <type>IfNull</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -795,47 +948,25 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <connection>G2_PROYECTO_G4_VOLCANES</connection>
-    <schema>dbo</schema>
-    <table>Volcano</table>
-    <commit>1000</commit>
-    <truncate>N</truncate>
-    <ignore_errors>N</ignore_errors>
-    <use_batch>Y</use_batch>
-    <specify_fields>Y</specify_fields>
-    <partitioning_enabled>N</partitioning_enabled>
-    <partitioning_field/>
-    <partitioning_daily>N</partitioning_daily>
-    <partitioning_monthly>Y</partitioning_monthly>
-    <tablename_in_field>N</tablename_in_field>
-    <tablename_field/>
-    <tablename_in_table>Y</tablename_in_table>
-    <return_keys>N</return_keys>
-    <return_field/>
+    <replaceAllByValue/>
+    <replaceAllMask/>
+    <selectFields>Y</selectFields>
+    <selectValuesType>N</selectValuesType>
+    <setEmptyStringAll>N</setEmptyStringAll>
+    <valuetypes>
+      </valuetypes>
     <fields>
       <field>
-        <column_name>VolcanoName</column_name>
-        <stream_name>VolcanoName</stream_name>
+        <name>VOLCANO_EXPLOSIVITY</name>
+        <value>0</value>
+        <mask/>
+        <set_empty_string>N</set_empty_string>
       </field>
       <field>
-        <column_name>Elevation</column_name>
-        <stream_name>Elevation</stream_name>
-      </field>
-      <field>
-        <column_name>Type</column_name>
-        <stream_name>Type</stream_name>
-      </field>
-      <field>
-        <column_name>Status</column_name>
-        <stream_name>Status</stream_name>
-      </field>
-      <field>
-        <column_name>Volcano Explosivity</column_name>
-        <stream_name>Volcano Explosivity</stream_name>
-      </field>
-      <field>
-        <column_name>DEATHS</column_name>
-        <stream_name>DEATHS</stream_name>
+        <name>DEATHS</name>
+        <value>0</value>
+        <mask/>
+        <set_empty_string>N</set_empty_string>
       </field>
     </fields>
     <attributes/>
@@ -847,72 +978,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>352</xloc>
-      <yloc>208</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Table output</name>
-    <type>TableOutput</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <connection>G2_PROYECTO_G4_VOLCANES</connection>
-    <schema>dbo</schema>
-    <table>Location</table>
-    <commit>1000</commit>
-    <truncate>N</truncate>
-    <ignore_errors>N</ignore_errors>
-    <use_batch>Y</use_batch>
-    <specify_fields>Y</specify_fields>
-    <partitioning_enabled>N</partitioning_enabled>
-    <partitioning_field/>
-    <partitioning_daily>N</partitioning_daily>
-    <partitioning_monthly>Y</partitioning_monthly>
-    <tablename_in_field>N</tablename_in_field>
-    <tablename_field/>
-    <tablename_in_table>Y</tablename_in_table>
-    <return_keys>N</return_keys>
-    <return_field/>
-    <fields>
-      <field>
-        <column_name>VolcanoName</column_name>
-        <stream_name>VolcanoName</stream_name>
-      </field>
-      <field>
-        <column_name>Place</column_name>
-        <stream_name>Place</stream_name>
-      </field>
-      <field>
-        <column_name>Country</column_name>
-        <stream_name>Country</stream_name>
-      </field>
-      <field>
-        <column_name>Latitude</column_name>
-        <stream_name>Latitude</stream_name>
-      </field>
-      <field>
-        <column_name>Longitude</column_name>
-        <stream_name>Longitude</stream_name>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>352</xloc>
-      <yloc>368</yloc>
+      <xloc>320</xloc>
+      <yloc>112</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
