@@ -30,10 +30,12 @@ CREATE TABLE dbo.location (
     location_details TEXT,
     longitude VARCHAR(255),
     latitude VARCHAR(255)
-    FOREIGN KEY (register_num) REFERENCES floods(register_num)
+    -- FOREIGN KEY (register_num) REFERENCES floods(register_num)
 );
 
 SELECT * FROM floods
+GO
+SELECT * FROM location
 GO
 
 USE G2_PROYECTO_G4_TERREMOTOS
@@ -46,8 +48,8 @@ GO
 
 CREATE TABLE dbo.Earthquake (
     ID VARCHAR(255) PRIMARY KEY,
-    DATE DATE NOT NULL,
-    TIME TIME NOT NULL,
+    Earthquake_DATE VARCHAR(255) NOT NULL,
+    Earthquake_TIME VARCHAR(255) NOT NULL,
     DEPTH FLOAT NOT NULL,
     MAGNITUDE FLOAT
 );
@@ -64,6 +66,8 @@ CREATE TABLE dbo.Location (
 
 SELECT * FROM dbo.Earthquake;
 GO
+SELECT * FROM Location
+GO
 
 USE G2_PROYECTO_G4_VOLCANES
 GO
@@ -79,7 +83,8 @@ CREATE TABLE Volcano (
     ELEVATION INTEGER NOT NULL,
     ERUPTION_TYPE VARCHAR(255)NOT NULL,
     VOLCANO_EXPLOSIVITY INTEGER NOT NULL,
-    DEATHS INTEGER
+    DEATHS INTEGER,
+	ERUPTION_DATE VARCHAR(255) NOT NULL,
 );
 
 CREATE TABLE Location (
@@ -93,4 +98,6 @@ CREATE TABLE Location (
 );
 
 SELECT * FROM Volcano
+GO
+SELECT * FROM Location
 GO
