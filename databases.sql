@@ -30,7 +30,7 @@ CREATE TABLE dbo.location (
     location_details TEXT,
     longitude VARCHAR(255),
     latitude VARCHAR(255)
-    -- FOREIGN KEY (register_num) REFERENCES floods(register_num)
+    FOREIGN KEY (register_num) REFERENCES floods(register_num)
 );
 
 SELECT * FROM floods
@@ -59,7 +59,7 @@ CREATE TABLE dbo.Location (
     COUNTRY VARCHAR(255),
     LATITUDE VARCHAR(255) NOT NULL,
     LONGITUDE VARCHAR(255) NOT NULL,
-    -- FOREIGN KEY (ID) REFERENCES Earthquake(ID)
+    FOREIGN KEY (ID) REFERENCES Earthquake(ID)
 );
 
 SELECT * FROM dbo.Earthquake;
@@ -89,7 +89,7 @@ CREATE TABLE Location (
     COUNTRY VARCHAR(255) NOT NULL,
     LATITUDE VARCHAR(255) NOT NULL,
     LONGITUDE VARCHAR(255) NOT NULL
-    -- FOREIGN KEY (ID) REFERENCES Volcano(ID)
+    FOREIGN KEY (ID) REFERENCES Volcano(ID)
 );
 
 SELECT * FROM Volcano
