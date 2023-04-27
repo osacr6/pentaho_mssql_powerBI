@@ -47,8 +47,9 @@ GO
 GO
 
 
+USE G2_PROYECTO_G4_DESASTRES;
+GO
 SELECT * FROM dbo.dim_geografica order by ID;
 GO
-
 SELECT * FROM dbo.hechos_eventonatural order by ID;
 GO

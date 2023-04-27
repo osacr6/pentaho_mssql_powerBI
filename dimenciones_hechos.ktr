@@ -3088,7 +3088,7 @@
       </field>
       <field>
         <column_name>fecha</column_name>
-        <stream_name>DATE</stream_name>
+        <stream_name>Earthquake_TIME</stream_name>
       </field>
       <field>
         <column_name>magnitud</column_name>
@@ -3267,11 +3267,11 @@
         <rename/>
       </field>
       <field>
-        <name>DATE</name>
+        <name>Earthquake_DATE</name>
         <rename/>
       </field>
       <field>
-        <name>TIME</name>
+        <name>Earthquake_TIME</name>
         <rename/>
       </field>
       <field>
@@ -3301,8 +3301,8 @@
         <storage_type/>
       </meta>
       <meta>
-        <name>DATE</name>
-        <rename>DATE</rename>
+        <name>Earthquake_DATE</name>
+        <rename>Earthquake_DATE</rename>
         <type>None</type>
         <length>10</length>
         <precision>-2</precision>
@@ -3318,8 +3318,8 @@
         <storage_type/>
       </meta>
       <meta>
-        <name>TIME</name>
-        <rename>TIME</rename>
+        <name>Earthquake_TIME</name>
+        <rename>Earthquake_TIME</rename>
         <type>None</type>
         <length>16</length>
         <precision>-2</precision>

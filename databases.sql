@@ -30,12 +30,17 @@ CREATE TABLE dbo.location (
     location_details TEXT,
     longitude VARCHAR(255),
     latitude VARCHAR(255)
-    -- FOREIGN KEY (register_num) REFERENCES floods(register_num)
 );
 
-SELECT * FROM floods
+--ALTER TABLE location ADD CONSTRAINT Fk_location_register_num
+--	FOREIGN KEY (register_num) REFERENCES floods(register_num)
+--GO
+
+USE G2_PROYECTO_G4_INUNDACIONES;
 GO
-SELECT * FROM location
+SELECT * FROM floods order by register_num
+GO
+SELECT * FROM location order by register_num
 GO
 
 USE G2_PROYECTO_G4_TERREMOTOS
@@ -64,9 +69,11 @@ CREATE TABLE dbo.Location (
     FOREIGN KEY (ID) REFERENCES Earthquake(ID)
 );
 
-SELECT * FROM dbo.Earthquake;
+USE G2_PROYECTO_G4_TERREMOTOS
 GO
-SELECT * FROM Location
+SELECT * FROM dbo.Earthquake order by ID
+GO
+SELECT * FROM Location order by ID
 GO
 
 USE G2_PROYECTO_G4_VOLCANES
@@ -97,7 +104,9 @@ CREATE TABLE Location (
     FOREIGN KEY (ID) REFERENCES Volcano(ID)
 );
 
-SELECT * FROM Volcano
+USE G2_PROYECTO_G4_VOLCANES
 GO
-SELECT * FROM Location
+SELECT * FROM Volcano order by ID
+GO
+SELECT * FROM Location order by ID
 GO
