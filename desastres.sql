@@ -2,6 +2,10 @@ USE G2_PROYECTO_G4_DESASTRES;
 GO
 
 --
+ALTER TABLE hechos_eventonatural DROP CONSTRAINT IF EXISTS Fk_location_id
+GO
+ALTER TABLE hechos_eventonatural DROP CONSTRAINT IF EXISTS Fk_tipoevento_id
+GO
 DROP TABLE IF EXISTS dbo.dim_tipoevento;
 GO
 CREATE TABLE dbo.dim_tipoevento (
@@ -30,15 +34,17 @@ GO
 CREATE TABLE dbo.hechos_eventonatural (
     ID VARCHAR(255) PRIMARY KEY,
 	nombre VARCHAR(255),
-    tipoevento INTEGER,
 	magnitud FLOAT,
     muertos INTEGER,
     fecha VARCHAR(255),
+	notas TEXT,
 	location_id VARCHAR(255),
 	tipoevento_id INTEGER,
 );
 
-alter table hechos_eventonatural add foreign key (location_id) references dim_geografica(ID)
+--ALTER TABLE hechos_eventonatural ADD CONSTRAINT Fk_location_id
+--	foreign key (location_id) references dim_geografica(ID)
 GO
-alter table hechos_eventonatural add foreign key (tipoevento_id) references dim_tipoevento(ID)
+--ALTER TABLE hechos_eventonatural ADD CONSTRAINT Fk_tipoevento_id
+--	foreign key (tipoevento_id) references dim_tipoevento(ID)
 GO
