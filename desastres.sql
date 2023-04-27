@@ -25,9 +25,6 @@ CREATE TABLE dbo.dim_geografica (
     latitude VARCHAR(255)
 );
 
-SELECT * FROM dbo.dim_geografica;
-GO
-
 -- 
 DROP TABLE IF EXISTS dbo.hechos_eventonatural;
 GO
@@ -47,4 +44,11 @@ CREATE TABLE dbo.hechos_eventonatural (
 GO
 --ALTER TABLE hechos_eventonatural ADD CONSTRAINT Fk_tipoevento_id
 --	foreign key (tipoevento_id) references dim_tipoevento(ID)
+GO
+
+
+SELECT * FROM dbo.dim_geografica order by ID;
+GO
+
+SELECT * FROM dbo.hechos_eventonatural order by ID;
 GO

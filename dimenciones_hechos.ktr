@@ -777,6 +777,26 @@
       <to>Replace in string Volcano_$1 2</to>
       <enabled>Y</enabled>
     </hop>
+    <hop>
+      <from>Replace in string Earthquake_$1 2</from>
+      <to>Add constants 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Replace in string Volcano_$1 2</from>
+      <to>Add constants 3</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Add constants 3</from>
+      <to>Table hechos_eventonatural z</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Add constants 2</from>
+      <to>Table hechos_eventonatural y</to>
+      <enabled>Y</enabled>
+    </hop>
   </order>
   <step>
     <name>If field value is null</name>
@@ -1709,7 +1729,7 @@
     <connection>G2_PROYECTO_G4_DESASTRES</connection>
     <schema>dbo</schema>
     <table>dim_geografica</table>
-    <commit>1000</commit>
+    <commit>10000</commit>
     <truncate>N</truncate>
     <ignore_errors>N</ignore_errors>
     <use_batch>Y</use_batch>
@@ -1773,7 +1793,7 @@
     <connection>G2_PROYECTO_G4_DESASTRES</connection>
     <schema>dbo</schema>
     <table>dim_geografica</table>
-    <commit>1000</commit>
+    <commit>10000</commit>
     <truncate>N</truncate>
     <ignore_errors>N</ignore_errors>
     <use_batch>Y</use_batch>
@@ -3047,7 +3067,7 @@
     <connection>G2_PROYECTO_G4_DESASTRES</connection>
     <schema>dbo</schema>
     <table>hechos_eventonatural</table>
-    <commit>1000</commit>
+    <commit>10000</commit>
     <truncate>N</truncate>
     <ignore_errors>N</ignore_errors>
     <use_batch>Y</use_batch>
@@ -3062,6 +3082,26 @@
     <return_keys>N</return_keys>
     <return_field/>
     <fields>
+      <field>
+        <column_name>ID</column_name>
+        <stream_name>location_id</stream_name>
+      </field>
+      <field>
+        <column_name>fecha</column_name>
+        <stream_name>DATE</stream_name>
+      </field>
+      <field>
+        <column_name>magnitud</column_name>
+        <stream_name>MAGNITUDE</stream_name>
+      </field>
+      <field>
+        <column_name>location_id</column_name>
+        <stream_name>location_id</stream_name>
+      </field>
+      <field>
+        <column_name>tipoevento_id</column_name>
+        <stream_name>tipoevento_id</stream_name>
+      </field>
     </fields>
     <attributes/>
     <cluster_schema/>
@@ -3091,7 +3131,7 @@
     <connection>G2_PROYECTO_G4_DESASTRES</connection>
     <schema>dbo</schema>
     <table>hechos_eventonatural</table>
-    <commit>1000</commit>
+    <commit>10000</commit>
     <truncate>N</truncate>
     <ignore_errors>N</ignore_errors>
     <use_batch>Y</use_batch>
@@ -3106,6 +3146,30 @@
     <return_keys>N</return_keys>
     <return_field/>
     <fields>
+      <field>
+        <column_name>ID</column_name>
+        <stream_name>location_id</stream_name>
+      </field>
+      <field>
+        <column_name>nombre</column_name>
+        <stream_name>VOLCANO_NAME</stream_name>
+      </field>
+      <field>
+        <column_name>magnitud</column_name>
+        <stream_name>VOLCANO_EXPLOSIVITY</stream_name>
+      </field>
+      <field>
+        <column_name>muertos</column_name>
+        <stream_name>DEATHS</stream_name>
+      </field>
+      <field>
+        <column_name>location_id</column_name>
+        <stream_name>location_id</stream_name>
+      </field>
+      <field>
+        <column_name>tipoevento_id</column_name>
+        <stream_name>tipoevento_id</stream_name>
+      </field>
     </fields>
     <attributes/>
     <cluster_schema/>
@@ -3116,8 +3180,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>784</xloc>
-      <yloc>832</yloc>
+      <xloc>768</xloc>
+      <yloc>848</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3359,7 +3423,7 @@
       <meta>
         <name>ID</name>
         <rename>ID</rename>
-        <type>None</type>
+        <type>String</type>
         <length>9</length>
         <precision>0</precision>
         <conversion_mask/>
@@ -3565,7 +3629,7 @@
     <fields>
       <field>
         <in_stream_name>ID</in_stream_name>
-        <out_stream_name/>
+        <out_stream_name>location_id</out_stream_name>
         <use_regex>yes</use_regex>
         <replace_string>(.*)</replace_string>
         <replace_by_string>Earthquake_$1</replace_by_string>
@@ -3604,7 +3668,7 @@
     <fields>
       <field>
         <in_stream_name>ID</in_stream_name>
-        <out_stream_name/>
+        <out_stream_name>location_id</out_stream_name>
         <use_regex>yes</use_regex>
         <replace_string>(.*)</replace_string>
         <replace_by_string>Volcano_$1</replace_by_string>
@@ -3625,6 +3689,84 @@
     </remotesteps>
     <GUI>
       <xloc>432</xloc>
+      <yloc>848</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Add constants 2</name>
+    <type>Constant</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <name>tipoevento_id</name>
+        <type>Integer</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif>2</nullif>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>608</xloc>
+      <yloc>720</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Add constants 3</name>
+    <type>Constant</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <name>tipoevento_id</name>
+        <type>Integer</type>
+        <format/>
+        <currency/>
+        <decimal/>
+        <group/>
+        <nullif>3</nullif>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>608</xloc>
       <yloc>848</yloc>
       <draw>Y</draw>
     </GUI>
