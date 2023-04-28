@@ -39,11 +39,11 @@ CREATE TABLE dbo.hechos_eventonatural (
 	tipoevento_id INTEGER,
 );
 
---ALTER TABLE hechos_eventonatural ADD CONSTRAINT Fk_location_id
---	foreign key (location_id) references dim_geografica(ID)
+ALTER TABLE hechos_eventonatural ADD CONSTRAINT Fk_location_id
+	foreign key (location_id) references dim_geografica(ID)
 GO
---ALTER TABLE hechos_eventonatural ADD CONSTRAINT Fk_tipoevento_id
---	foreign key (tipoevento_id) references dim_tipoevento(ID)
+ALTER TABLE hechos_eventonatural ADD CONSTRAINT Fk_tipoevento_id
+	foreign key (tipoevento_id) references dim_tipoevento(ID)
 GO
 
 
@@ -53,3 +53,5 @@ SELECT * FROM dbo.dim_geografica order by ID;
 GO
 SELECT * FROM dbo.hechos_eventonatural order by ID;
 GO
+
+
